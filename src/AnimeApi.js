@@ -6,7 +6,7 @@ module.exports = class AnimeApi {
 
   /**
    * gets an Anime by Id
-   * @param {number} id 
+   * @param {number} id s
    */
   getAnime(id, cb) {
     const options = {
