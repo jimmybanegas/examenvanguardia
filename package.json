@@ -1,0 +1,67 @@
+{
+  "name": "jimmyalavanguardia",
+  "version": "1.0.9",
+  "description": "Un examen de vanguardia",
+  "main": "index.js",
+  "bin": {
+    "vanguardia": "./index.js"  
+  },
+  "scripts": {
+    "lint": "eslint src spec index.js --ext .js",
+    "jasmine": "jasmine",
+    "lint-test": "npm run lint && npm run jasmine",
+    "test": "nyc --check-coverage --lines 90 npm run lint-test",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "jasmine": "^2.6.0",
+    "jasmine-co": "^1.2.2",
+    "nyc": "^11.0.3"
+  },
+  "nyc": {
+    "all": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
+    "include": [
+      "src/**",
+      "lib/**"
+    ],
+    "exclude": [
+      "spec/**",
+      "node_modules/**"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "clear": "0.0.1",
+    "clui": "^0.3.1",
+    "figlet": "^1.1.2",
+    "github": "^2.1.0",
+    "inquirer": "^1.1.0",
+    "lodash": "^4.13.1",
+    "minimist": "^1.2.0",
+    "preferences": "^0.2.1",
+    "simple-git": "^1.40.0",
+    "touch": "^1.0.0",
+    "jfile": "^1.1.12"
+  }
+}

@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "7"
+deploy:
+  provider: npm
+  email: jimmybanegas93@gmail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: false
+    branch: master
