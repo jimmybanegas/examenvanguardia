@@ -1,7 +1,7 @@
 {
-  "name": "ejemplojs",
+  "name": "jimmyalavanguardia",
   "version": "1.0.0",
-  "description": "ejemplo en clase",
+  "description": "Un examen de vanguardia",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src spec index.js --ext .js",
