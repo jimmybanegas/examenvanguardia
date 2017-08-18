@@ -7,10 +7,10 @@
     "vanguardia": "./index.js"
   },
   "scripts": {
-    "lint": "eslint src lib spec index.js --ext .js",
+    "lint": "eslint src spec index.js --ext .js",
     "jasmine": "jasmine",
     "lint-test": "npm run lint && npm run jasmine",
-    "test": "nyc --check-coverage --lines 90 npm run lint-test",
+    "test": "nyc npm run lint-test",
     "start": "node index.js"
   },
   "author": "",
