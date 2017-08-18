@@ -4,3 +4,4 @@ module.exports = class Patito {
     return `Hellos ${name}`;
   }
 };
+
