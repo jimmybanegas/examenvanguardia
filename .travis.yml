@@ -6,6 +6,5 @@ deploy:
   email: jimmybanegas93@gmail.com
   api_key: $NPM_TOKEN
   on:
-    tags: true
+    tags: false
     branch: master
-    tag: next
