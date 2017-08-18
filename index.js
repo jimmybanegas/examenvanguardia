@@ -5,7 +5,7 @@ const clear = require('clear');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
 
-const files = require('./lib/files');
+// const files = require('./lib/files');
 
 clear();
 console.log(
