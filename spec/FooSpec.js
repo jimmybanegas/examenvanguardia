@@ -11,13 +11,13 @@ describe('Foo class', () => {
       expect(greeting).toBe('Hellos Carlos');
     });
   });
-//   describe('when greeting with null', () => {
-//     let greeting = null;
-//     beforeEach(() => {
-//       greeting = Foo.greet(null);
-//     });
-//     it('then the greeting message is correct', () => {
-//       expect(greeting).toBe('Hellos Stranger');
-//     });
-//   });
+  describe('when greeting with null', () => {
+    let greeting = null;
+    beforeEach(() => {
+      greeting = Foo.greet(null);
+    });
+    it('then the greeting message is correct', () => {
+      expect(greeting).toBe('Hellos Stranger');
+    });
+  });
 });
