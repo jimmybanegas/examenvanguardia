@@ -1,11 +1,11 @@
-const Foo = require('../src/Foo');
+const wordChain = require('../src/WordChain');
 require('jasmine-co').install();
 
 describe('Foo class', () => {
   describe('when greeting with Carlos', () => {
     let greeting = null;
     beforeEach(() => {
-      greeting = Foo.greet('Carlos');
+      greeting = wordChain.greet('Carlos');
     });
     it('then the greeting message is correct', () => {
       expect(greeting).toBe('Hellos Carlos');
@@ -14,7 +14,7 @@ describe('Foo class', () => {
   describe('when greeting with null', () => {
     let greeting = null;
     beforeEach(() => {
-      greeting = Foo.greet(null);
+      greeting = wordChain.greet(null);
     });
     it('then the greeting message is correct', () => {
       expect(greeting).toBe('Hellos Stranger');
