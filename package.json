@@ -1,13 +1,13 @@
 {
   "name": "jimmyalavanguardia",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Un examen de vanguardia",
   "main": "index.js",
   "bin": {
     "vanguardia": "./index.js"
   },
   "scripts": {
-    "lint": "eslint src lib spec index.js --ext .js",
+    "lint": "eslint src spec index.js --ext .js",
     "jasmine": "jasmine",
     "lint-test": "npm run lint && npm run jasmine",
     "test": "nyc npm run lint-test",
@@ -28,8 +28,13 @@
   },
   "nyc": {
     "all": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90,
     "include": [
-      "src/**"
+      "src/**",
+      "lib/**"
     ],
     "exclude": [
       "spec/**",
@@ -56,6 +61,7 @@
     "minimist": "^1.2.0",
     "preferences": "^0.2.1",
     "simple-git": "^1.40.0",
-    "touch": "^1.0.0"
+    "touch": "^1.0.0",
+    "jfile": "^1.1.12"
   }
 }
