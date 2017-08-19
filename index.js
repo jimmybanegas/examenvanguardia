@@ -4,8 +4,9 @@ const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
-
-// const files = require('./lib/files');
+const JFile = require('jfile');
+const WordChain = require('./src/WordChain');
+const WordChain2 = require('./src/WordChain2');
 
 clear();
 console.log(
@@ -14,7 +15,8 @@ console.log(
   )
 );
 
-function getGithubCredentials(callback) {
+
+function promptUser(callback) {
   const questions = [
     {
       name: 'source',
@@ -37,24 +39,39 @@ function getGithubCredentials(callback) {
         }
         return 'Please enter the destination word';
       }
+    },
+    {
+      name: 'language',
+      type: 'input',
+      message: 'Enter en for ENGLISH or es for SPANISH:',
+      validate(value) {
+        if (value.length && (value.toLowerCase() === 'en' || value.toLowerCase() === 'es')) {
+          return true;
+        }
+        return 'Please enter EN or ES';
+      }
     }
   ];
 
-  inquirer.prompt(questions).then(callback);
+  inquirer.prompt(questions).then((answers) => {
+    let words = [];
+    if (answers.language.toLowerCase() === 'es') {
+      words = new JFile('./palabras.txt').lines;
+    } else {
+      words = new JFile('./words').lines;
+    }
+
+    // if (answers.source.length === answers.destination.length) {
+    const prueba = new WordChain();
+
+    console.log(prueba.search(answers.source.trim(), answers.destination.trim(), [], words));
+    // // } else {
+    //   const prueba2 = new WordChain2();
+
+    //   console.log(prueba2.findPath(answers.source, answers.destination, words));
+    // // }
+  });
 }
 
-const JFile = require('jfile');
+promptUser();
 
-const words = new JFile('./palabras.txt');
-
-const WordChain = require('./src/WordChain');
-
-const prueba = new WordChain();
-
-console.log(prueba.search('luna', 'misa', [], words.lines));
-
-// const WordChain = require('./src/WordChain2');
-
-// const prueba = new WordChain();
-
-// console.log(prueba.findPath('pepino', 'luna', words.lines));
