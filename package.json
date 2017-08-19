@@ -61,6 +61,7 @@
     "minimist": "^1.2.0",
     "preferences": "^0.2.1",
     "simple-git": "^1.40.0",
-    "touch": "^1.0.0"
+    "touch": "^1.0.0",
+    "jfile": "^1.1.12"
   }
 }
