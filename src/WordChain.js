@@ -1,14 +1,17 @@
+
+const fs = require('fs');
+
 module.exports = class WordChain {
   constructor() {
   }
 
-  findWordChain(startWord, targetWord, dictionary) {
+  static findWordChain(startWord, targetWord, dictionary) {
     if (dictionary.indexOf(startWord) < 0) {
-      throw `${startWord} is not listed in the dictionary!`;
+      throw new Error(`${startWord} is not listed in the dictionary!`);
     }
 
     if (dictionary.indexOf(targetWord) < 0) {
-      throw `${targetWord} is not listed in the dictionary!`;
+      throw new Error(`${targetWord} is not listed in the dictionary!`);
     }
 
     console.log(`Finding path from ${startWord} to ${targetWord}`);
@@ -19,7 +22,7 @@ module.exports = class WordChain {
  * Count the difference between any two words.
  * E.g. cat and fat have one difference (the letter 'f')
  */
-  countDifferences(word1, word2) {
+  static countDifferences(word1, word2) {
     let count = 0;
     for (let i = 0; i < word1.length; i += 1) {
       if (word1[i] !== word2[i]) {
@@ -34,7 +37,7 @@ module.exports = class WordChain {
  * from the start word.
  * E.g. if start word is cat then cog would be removed while fat would remain.
  */
-  removeWordsWithMoreThanOneDifferenceFromTheStartWord(startWord, dictionary) {
+  static removeWordsWithMoreThanOneDifferenceFromTheStartWord(startWord, dictionary) {
     const self = this;
     const wordlist = dictionary.filter(word => self.countDifferences(startWord, word) === 1 &&
         startWord.length === word.length);
@@ -44,17 +47,24 @@ module.exports = class WordChain {
   /*
  * Remove all words from the wordlist which are also present in our current wordchain.
  */
-  removeWordsThatHaveAlreadyBeenSeen(wordlist, predecessors) {
+  static removeWordsThatHaveAlreadyBeenSeen(wordlist, predecessors) {
     return wordlist.filter(word => predecessors.indexOf(word) === -1);
   }
 
   /*
  * Remove any duplicates in the wordlist
  */
-  deduplicate(wordlist) {
+  static deduplicate(wordlist) {
     return wordlist.filter((word, idx, list) => wordlist.indexOf(word) === idx);
   }
 
+
+  static loadDictionary() {
+    return fs.readFileSync('./words')
+      .toString()
+      .toLowerCase()
+      .split('\n');
+  }
 
   /*
  * Sort the wordlist in increasing number of differences from the target word.
@@ -65,7 +75,7 @@ module.exports = class WordChain {
  * rather than [big, fat, dog].  This is because the word 'fat' is closer to 'cat' than 
  * the word 'big'.
  */
-  sortByNumberOfDifferences(wordlist, targetWord) {
+  static sortByNumberOfDifferences(wordlist, targetWord) {
     const self = this;
     return wordlist.sort((word1, word2) => self.countDifferences(word1, targetWord) - self.countDifferences(word2, targetWord));
   }
@@ -76,7 +86,7 @@ module.exports = class WordChain {
  * The for-loop will attempt to form a word chain to the target word using each word
  * in the wordlist.  The loop will exit if a chain is successfully formed.
  */
-  search(startWord, targetWord, predecessors, dictionary) {
+  static search(startWord, targetWord, predecessors, dictionary) {
     let wordlist = this.removeWordsWithMoreThanOneDifferenceFromTheStartWord(startWord, dictionary);
 
     wordlist = this.removeWordsThatHaveAlreadyBeenSeen(wordlist, predecessors);

@@ -1,6 +1,6 @@
 {
   "name": "jimmyalavanguardia",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Un examen de vanguardia",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "lint": "eslint src spec index.js --ext .js",
     "jasmine": "jasmine",
     "lint-test": "npm run lint && npm run jasmine",
-    "test": "nyc npm run lint-test",
+    "test": "nyc --check-coverage --lines 90 npm run lint-test",
     "start": "node index.js"
   },
   "author": "",

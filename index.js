@@ -6,7 +6,7 @@ const figlet = require('figlet');
 const inquirer = require('inquirer');
 const JFile = require('jfile');
 const WordChain = require('./src/WordChain');
-const WordChain2 = require('./src/WordChain2');
+// const WordChain2 = require('./src/WordChain2');
 
 clear();
 console.log(
