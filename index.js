@@ -64,7 +64,7 @@ function promptUser(callback) {
     // if (answers.source.length === answers.destination.length) {
     const prueba = new WordChain();
 
-    console.log(prueba.search(answers.source.trim(), answers.destination.trim(), [], words));
+    console.log(WordChain.search(answers.source.trim(), answers.destination.trim(), [], words));
     // // } else {
     //   const prueba2 = new WordChain2();
 
