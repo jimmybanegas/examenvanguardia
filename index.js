@@ -56,9 +56,9 @@ function promptUser(callback) {
   inquirer.prompt(questions).then((answers) => {
     let words = [];
     if (answers.language.toLowerCase() === 'es') {
-      words = new JFile('./palabras.txt').lines;
+      words = new JFile('./node_modules/jimmyalavanguardia/palabras.txt').lines;
     } else {
-      words = new JFile('./words').lines;
+      words = new JFile('./node_modules/jimmyalavanguardia/words').lines;
     }
 
     // if (answers.source.length === answers.destination.length) {
