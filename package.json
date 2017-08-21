@@ -1,10 +1,10 @@
 {
   "name": "jimmyalavanguardia",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Un examen de vanguardia",
   "main": "index.js",
   "bin": {
-    "vanguardia": "./index.js"
+    "vanguardia": "./index.js"  
   },
   "scripts": {
     "lint": "eslint src spec index.js --ext .js",
