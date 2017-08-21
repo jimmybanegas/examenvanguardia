@@ -106,7 +106,7 @@ module.exports = class WordChain {
         return true;
       }
       console.log(`Failed to find a path from ${startWord} to ${targetWord} with the following path: ${predecessors}`);
-      console.log('About to backtrack and try again with a different path!');
+      // console.log('About to backtrack and try again with a different path!');
       predecessors.pop();
     }
 
